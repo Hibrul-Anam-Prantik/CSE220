@@ -3,7 +3,6 @@ package Lab01;
 //Task 01: Merge Sorted Array
 class Task1{
 
-    //Complete this method so that it gives the Expected Output
     public static Integer[] mergeSortedArray( Integer[] arr1, Integer[] arr2 ){
         int i = 0, j = 0, k = 0;
         Integer[] mergedArr = new Integer[arr1.length + arr2.length];
