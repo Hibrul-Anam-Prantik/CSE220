@@ -6,10 +6,30 @@ class Task1{
     //Complete this method so that it gives the Expected Output
     public static void walkZigzag( Integer[][] matrix ){
 
-        //For this task you don't need to create new arrays
+        int row = matrix.length;
+        int col = matrix[0].length;
 
-        //TO DO
-
+        for(int c = 0; c < col; ++c) {
+            if (c % 2 == 0) {
+                for (int r = 0; r < row; ++r) {
+                    if (r % 2 == 0) {
+                        System.out.print(matrix[r][c] + " ");
+                    }
+                }
+            } else {
+                int r;
+                if(row % 2 == 0) {
+                    r = row - 1;
+                } else {
+                    r = row - 2;
+                }
+                while( r >= 0) {
+                    System.out.print(matrix[r][c] + " ");
+                    r -= 2;
+                }
+            }
+            System.out.println();
+        }
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
