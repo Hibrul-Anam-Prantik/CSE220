@@ -6,12 +6,21 @@ class Task4{
     //Complete this method so that it gives the Expected Output
     public static Integer[][] compressMatrix( Integer[][] matrix ){
 
-        //For this task you'll need to create new 2D array
-        
-        //TO DO
-
-        //remove the line below and return the newly created Compressed 2D matrix
-        return null;
+        int row = matrix.length, col = matrix[0].length;
+        Integer[][] newMatrix = new Integer[row / 2][col / 2];
+        int newI = 0;
+        for(int i = 0; i < row; i += 2) {
+            int newJ = 0;
+            for(int j = 0; j < col; j += 2) {
+                int sum = 0;
+                int a1 = matrix[i][j], a2 = matrix[i][j+1];
+                int b1 = matrix[i+1][j], b2 = matrix[i+1][j+1];
+                sum += (a1+a2+b1+b2);
+                newMatrix[newI][newJ++] = sum;
+            }
+            newI ++;
+        }
+        return newMatrix;
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
