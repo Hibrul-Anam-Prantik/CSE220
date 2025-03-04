@@ -9,10 +9,25 @@ class Task2{
         //For this task you'll need to create new arrays
         //we recommend you to use Integer type.
         //example:  Integer[] array = new Integer[5]
-
         //TO DO
-        //DELETE the following return statement when you're ready to return the 2D array
-        return null;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        Integer[] sumArr = new Integer[col - 1];
+        int iSum = col - 2;   // index for the new Array(backward), containing the differences
+        int i = col - 1, tempSum = 0;
+        while(i >= 0) {   // backward
+            int sum = 0;
+            for(int j = 0; j < row; ++j) {
+                sum += matrix[j][i];
+            }
+
+            if(i != col -1) {
+                sumArr[iSum --] = (tempSum - sum);  // adding backward
+            }
+            tempSum = sum;
+            i--;
+        }
+        return sumArr;
 
     }
 
