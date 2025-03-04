@@ -6,12 +6,36 @@ class Task3{
     //Complete this method so that it gives the Expected Output
     public static Integer rowRotation( Integer examWeek, String[][] matrix ){
 
-        //For this task you don"t need to create new arrays
-        //After rotation the Matrix should be printed inside the method
-        //Only the integer row number is to be returned
-
-        //TO DO
-        return null;
+        int row = matrix.length, col = matrix[0].length;
+        String[][] tempMatrix = new String[row][col];
+        // shift the values and arrange the seats
+        for(int i = 0; i < col; ++i) {
+            for(int j = 0; j < row; ++j ) {
+                int k = (j + examWeek - 1) % row;
+                // Inserting the arranged values to the tempMatrix
+                tempMatrix[k][i] = matrix[j][i];
+            }
+        }
+        // updating the matrix according to the tempMatrix
+        matrix = tempMatrix;
+        // printing the seat plan
+        Integer rowNum = 0;
+        for(int i = 0; i < row; ++i) {
+            System.out.print("|");
+            for(int j = 0; j < col; ++j) {
+                String str = matrix[i][j];
+                if(str.length() == 1) {
+                    System.out.print(" " + matrix[i][j] + "  |");
+                } else {
+                    System.out.print(" " + matrix[i][j] + " |");
+                }
+                if(matrix[i][j].equals("AA")) {
+                    rowNum = i + 1;  // adding 1 to avoid the 0-index term
+                }
+            }
+            System.out.println();
+        }
+        return rowNum;
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
