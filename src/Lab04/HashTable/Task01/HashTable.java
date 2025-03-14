@@ -63,7 +63,7 @@ public class HashTable {
 
 	//you need to COMPLETE this method
     private int hashFunction( String key ){
-
+        // TO DO
         int size = ht.length; // I have to use this to do the mod and get the index
         if(key.length() % 2 == 1) key += "N";
         int sum = 0;
@@ -78,7 +78,7 @@ public class HashTable {
 	//you need to COMPLETE this method
     //Hint: you may need to use Integer.parseInt() to convert from String to Integer
     public String searchHashtable( Object[] keyValuePair ){
-
+        // TO DO
         for(int i = 0; i < ht.length; ++i) {  // running loop to access each PairNode
             PairNode curr = ht[i];
             while(curr != null) { // checking for the key
@@ -86,7 +86,10 @@ public class HashTable {
                 curr = curr.next;
             }
         }
-
+        /*
+        here I could also use the hashFunction(String x) method
+        to het the exact index containing the key and then search there
+        */
         return "Not Found";
     }
 
