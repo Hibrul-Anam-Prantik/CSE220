@@ -26,7 +26,7 @@ public class HashTableTester {
         System.out.println("====================Test#3====================");
         ht.insert("apple", 100);
         ht.insert("Guava", 10);
-        System.out.println(":::Expected Output:::\n0 ('coconut', 90) --> ('pineapple', 50) --> ('banana', 30) -->\n1 ('apple', 100) --> ('apple', 20) --> ('Guava', 10) -->\n2 ('cherry', 50) -->");
+        System.out.println(":::Expected Output:::\n0 ('coconut', 90) --> ('pineapple', 50) --> ('banana', 30) -->\n1 ('apple', 100) --> ('Guava', 10) -->\n2 ('cherry', 50) -->");
         System.out.println("---------------------");
         System.out.println(":::  Your Output  :::");
         ht.show();
