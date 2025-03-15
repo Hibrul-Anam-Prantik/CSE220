@@ -5,11 +5,85 @@ class Task5{
 
     //Complete this method so that it gives the Expected Output
     public static void playGame( Integer[][] arena ){
-
-        //For this task you don't need to create any new 2D array
-        //just print the result inside the function
-        
-        //TO DO
+        // TO DO
+        int row = arena.length, col = arena[0].length;
+        int points = 0;
+        for(int i = 0; i < row; ++i){
+            for(int j = 0; j < col; ++j){
+                if(arena[i][j] != 0 && arena[i][j] % 50 == 0) {
+                    if(i == 0) {
+                        if(j == 0) {
+                            if (arena[i][j + 1] == 2) {
+                                points += 2;
+                            }
+                            if (arena[i + 1][j] == 2) {
+                                points += 2;
+                            }
+                        } else if(j == col - 1) {
+                            if (arena[i][j - 1] == 2) {
+                                points += 2;
+                            }
+                            if (arena[i + 1][j] == 2) {
+                                points += 2;
+                            }
+                        } else {
+                            if (arena[i + 1][j] == 2) {
+                                points += 2;
+                            }
+                            if(arena[i][j - 1] == 2) {
+                                points += 2;
+                            }
+                            if(arena[i][j + 1] == 2) {
+                                points += 2;
+                            }
+                        }
+                    } else if(i == row - 1) {
+                        if(j == 0) {
+                            if (arena[i][j + 1] == 2) {
+                                points += 2;
+                            }
+                            if (arena[i - 1][j] == 2) {
+                                points += 2;
+                            }
+                        } else if(j == col - 1) {
+                            if(arena[i][j - 1] == 2) {
+                                points += 2;
+                            } else if(arena[i - 1][j] == 2) {
+                                points += 2;
+                            }
+                        } else {
+                            if (arena[i - 1][j] == 2) {
+                                points += 2;
+                            }
+                            if (arena[i][j - 1] == 2) {
+                                points += 2;
+                            }
+                            if (arena[i][j + 1] == 2) {
+                                points += 2;
+                            }
+                        }
+                    } else {
+                        if(arena[i - 1][j] == 2) {
+                            points += 2;
+                        }
+                        if(arena[i + 1][j] == 2) {
+                            points += 2;
+                        }
+                        if( j > 0 && arena[i][j - 1] == 2) {
+                            points += 2;
+                        }
+                        if(j < col - 1 && arena[i][j + 1] == 2) {
+                            points += 2;
+                        }
+                    }
+                }
+            }
+        }
+        if(points < 10) {
+            System.out.println("Points Gained: " + points + ". Your team is out.");
+        } else {
+            System.out.println("Points Gained: " + points + ". Your team has survived the game.");
+        }
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE

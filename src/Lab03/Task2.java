@@ -28,7 +28,6 @@ class Task2{
             i--;
         }
         return sumArr;
-
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
