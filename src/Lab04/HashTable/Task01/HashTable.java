@@ -79,17 +79,12 @@ public class HashTable {
     //Hint: you may need to use Integer.parseInt() to convert from String to Integer
     public String searchHashtable( Object[] keyValuePair ){
         // TO DO
-        for(int i = 0; i < ht.length; ++i) {  // running loop to access each PairNode
-            PairNode curr = ht[i];
-            while(curr != null) { // checking for the key
-                if(keyValuePair[0].equals(curr.key)) return "Found";
-                curr = curr.next;
-            }
+        int i = hashFunction((String)keyValuePair[0]);  // I will get the desired index from here
+        PairNode curr = ht[i];
+        while(curr != null) { // checking for the key
+            if(keyValuePair[0].equals(curr.key)) return "Found";
+            curr = curr.next;
         }
-        /*
-        here I could also use the hashFunction(String x) method
-        to het the exact index containing the key and then search there
-        */
         return "Not Found";
     }
 

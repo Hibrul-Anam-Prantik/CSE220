@@ -51,7 +51,7 @@ public class HashTableTester {
                     + "1 : (Key: Shelly, Value: 300) --> null\n"
                     + "2 : (Key: Cordelius, Value: 730) --> null\n"
                     + "3 : (Key: Edgar, Value: 320) --> (Key: Bo, Value: 580) --> (Key: Emz, Value: 520) --> (Key: Colt, Value: 360) --> null\n"
-                    + "4 : null"
+                    + "4 : null\n"
                     + "5 : null";
         System.out.println( exOut );
         System.out.println("::::Your Output::::");
