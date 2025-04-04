@@ -64,7 +64,6 @@ public class HashTable {
             }
             curr = curr.next;
         }
-
         // descending order sorting
         curr = ht[i];
         FruitNode prev = null;
