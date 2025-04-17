@@ -1,18 +1,41 @@
+import java.util.*;
 public class Rough
 {
     public static void main(String[] args) {
-        String key = "Morti";
-        if(key.length() % 2 == 1) key += "N";
-        int sum = 0;
-        for(int  i = 0; i < key.length(); i += 2) {
+        Linked_List ll = new Linked_List();
 
-            String ascii = (int)key.charAt(i) + "" + (int)key.charAt(i + 1);  // taking the ascii values of consecutive 2 chars, as instructed
-            System.out.println(ascii + " ==> ");
-            sum += Integer.parseInt(ascii);   // sum of the instructed ascii numbers
+
+        ll.addFirst(6);
+        ll.addLast(5);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(2);
+        ll.addLast(1);
+
+        ll.printLL();
+//        ll.head = reverse(ll.head);
+//        reverse(ll.head);  // why is it printing only the 1st Node's element ????????
+        ll.printLL();
+        System.out.println(isDescending(ll.head));
+        ll.printLL();
+    }
+    public static Node reverse(Node head) {
+        if(head == null || head.next == null) return head;
+        Node newHead = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+//        System.out.print(head.data + " -> ");
+        return newHead;
+    }
+    public static boolean isDescending(Node head) {
+        if( head == null) throw new NullPointerException("Empty List");
+        if(head.next == null) return true;
+        if((int)head.next.data < (int)head.data) {
+            isDescending(head.next);
+            return true;
         }
-        int size = 6;
-        System.out.println(sum);
-        System.out.println((int)'N');
-        System.out.println(sum % size);
+        else {
+            return false;
+        }
     }
 }

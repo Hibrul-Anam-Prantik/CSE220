@@ -7,7 +7,7 @@ public class Linked_List
     }
 
     // Add First
-    public void addFirst(String data) {
+    public void addFirst(Object data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -18,7 +18,7 @@ public class Linked_List
     }
 
     // Add Last
-    public void addLast(String data) {
+    public void addLast(Object data) {
         Node newNode = new Node(data);
 
         if(head == null) {
