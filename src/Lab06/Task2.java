@@ -13,7 +13,6 @@ public class Task2 {
     // At times you may need to typeCast root.elem to Integer
     // This method doesn't return anything
     public static void smallestLevel( BTNode root, Integer[] levelArray, int lvl ){
-        // TO DO
         if(root != null) {
             if(levelArray[lvl] == null) {
                 levelArray[lvl] = (Integer)root.elem;

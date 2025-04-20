@@ -9,7 +9,6 @@ public class Task5 {
     // At times you may need to typeCast root.elem to Integer
     // You can use extra helper private static methods with extra params as per need
     public static Integer subtractSummation( BTNode root ){
-        //TO DO
         if(root == null) return 0;
         return leftSum(root.left) - rightSum(root.right);
     }

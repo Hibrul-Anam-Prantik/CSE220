@@ -12,7 +12,6 @@ public class Task4 {
     // This method doesn't return anything
     // You can use extra helper private static methods as per need
     public static void swapChild( BTNode root, int lvl, int M ){
-        //TO DO
         if(root != null && lvl != M) {
             BTNode left = root.left, right = root.right;
             root.left = right;

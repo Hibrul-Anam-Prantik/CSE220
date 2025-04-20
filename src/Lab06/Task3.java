@@ -9,7 +9,6 @@ public class Task3 {
         // At times you may need to typeCast root.elem to Integer
         // You can use extra helper private static methods as per need
         public static Integer sumTree( BTNode root ){
-            //TO DO
             if(root == null) throw new NullPointerException("Root is null");;
             return levelWiseSum(root, 0);  // as argument -> sending 0 to assigning the base level which is 0
         }

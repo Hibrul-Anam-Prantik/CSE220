@@ -9,7 +9,6 @@ public class Task6 {
     // At times you may need to typeCast root.elem to Integer
     // You can use extra helper private static methods with extra params as per need
     public static Integer levelSum( BTNode root ){
-        //TO DO
         if(root == null) throw new NullPointerException("Root is null");
         return oddLevelSumMinusEvenLevelSum(root, 0);
     }
