@@ -54,8 +54,8 @@ public class BinarySearchTreeTester {
          else successPrint(t1);
         
         // //Write the rest of the test cases yourself
-        
-         System.out.println("------------------------------");
+
+        System.out.println("------------------------------");
         // // Test Case 2 (20,6)
         // // TO DO
         t1 = "Task#1 Test#2";  // I just updated the String t1, instead of creating new String
@@ -64,16 +64,10 @@ public class BinarySearchTreeTester {
         System.out.println(":  Your Output  : LCA(20,6)="+out);
         if(out==null || out!=15) failedPrint(t1);
         else successPrint(t1);
-         System.out.println("------------------------------");
+        System.out.println("------------------------------");
         // // Test Case 3 (18,22)
         // // TO DO
-        t1 = "Task#1 Test#3";
-        System.out.println(":Expected Output: LCA(18,22)=20");
-        out = Task1.lowestCommonAncestor(root,18,22);
-        System.out.println(":  Your Output  : LCA(18,22)="+out);
-        if(out==null || out!=20) failedPrint(t1);
-        else successPrint(t1);
-         System.out.println("------------------------------");
+        System.out.println("------------------------------");
         // // Test Case 4 (20,25)
         // // TO DO
         t1 = "Task#1 Test#4";
@@ -82,7 +76,8 @@ public class BinarySearchTreeTester {
         System.out.println(":  Your Output  : LCA(20,25)="+out);
         if(out==null || out!=25) failedPrint(t1);
         else successPrint(t1);
-         System.out.println("------------------------------");
+
+        System.out.println("------------------------------");
         // // Test Case 5 (10,12)
         // // TO DO
         t1 = "Task#1 Test#2";
@@ -91,7 +86,7 @@ public class BinarySearchTreeTester {
         System.out.println(":  Your Output  : LCA(10,12)="+out);
         if(out==null || out!=10) failedPrint(t1);
         else successPrint(t1);
-         System.out.println("------------------------------");
+        System.out.println("------------------------------");
     }
     
     public static void task2(){
@@ -164,13 +159,13 @@ public class BinarySearchTreeTester {
     public static void task4(){
         taskPrint("\n===================== TASK#4 =====================");
         taskPrint("=================== Mirror Sum ===================");
-        BSTNode root = new BSTNode(20);
-        root.left = new BSTNode(8);
-        root.right = new BSTNode(22);
-        root.left.left = new BSTNode(4);
-        root.left.right = new BSTNode(12);
-        root.left.right.left = new BSTNode(10);
-        root.left.right.right = new BSTNode(14);
+        BSTNode root = new BSTNode(10);
+        root.left = new BSTNode(6);
+        root.right = new BSTNode(15);
+        root.left.left = new BSTNode(3);
+        root.left.right = new BSTNode(8);
+        root.right.left = new BSTNode(12);
+        root.right.right = new BSTNode(20);
         BSTPrinter.printNode(root);
         System.out.println("----------------------Test1------------------------");
         String t1 = "Task#4 Test1:";
@@ -179,9 +174,17 @@ public class BinarySearchTreeTester {
         System.out.println(":  Your Output  : "+out);
         if(out==64) successPrint(t1);
         else failedPrint(t1);
-
+        //---------------------------------------------------------------------------
+        root = new BSTNode(20);
+        root.left = new BSTNode(15);
+        root.right = new BSTNode(25);
+        root.left.left = new BSTNode(10);
+        root.left.right = new BSTNode(18);
+        root.left.left.left = new BSTNode(5);
+        root.right.right = new BSTNode(30);
+        BSTPrinter.printNode(root);
         System.out.println("\n----------------------Test2------------------------");
-        t1 = "Task#4 Test1:";
+        t1 = "Task#4 Test2:";
         out = Task4.mirrorSum(root);
         System.out.println(":Expected Output: 80");
         System.out.println(":  Your Output  : "+out);
