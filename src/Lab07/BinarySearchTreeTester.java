@@ -140,7 +140,12 @@ public class BinarySearchTreeTester {
         // CONSTRUCT THE REST OF THE TREE ON YOUR OWN
         // FROM THE EXAMPLE SHOWN IN THE QUESTION
         // TO DO
-        
+        root.left.left.left = new BSTNode(2);
+        root.left.right = new BSTNode(15);
+        root.right = new BSTNode(40);
+        root.right.left =  new BSTNode(35);
+        root.right.left.right = new BSTNode(36);
+        root.right.right = new BSTNode(55);
         //The following lines tests the sumOfLeaves. It's already been done for you.
         //So don't change the lines below
         System.out.println("::Given Binary Tree::");

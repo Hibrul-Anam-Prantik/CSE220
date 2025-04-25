@@ -10,7 +10,11 @@ public class Task3 {
     // You'll need to return the sum of the leaf nodes
     public static Integer sumOfLeaves( BSTNode root, Integer sum ){
         // TO DO
-        return null; //remove this line
+        if(root == null) return 0;
+        if(root.left == null && root.right == null) {
+            return sum + root.elem;
+        }
+        return sumOfLeaves(root.left, sum) + sumOfLeaves(root.right, sum);
     }
     //===============================================================
 
