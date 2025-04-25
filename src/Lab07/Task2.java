@@ -11,7 +11,32 @@ public class Task2 {
     // return the path as a String
     public static String findPath( BSTNode root, Integer key ){
         // TO DO
-        return null; //remove this line
+        if(root == null) return null;
+        boolean found = searchKey(root, key);
+        if(found) {
+            return findPath(root, key, "");
+        }
+        return "No Path Found";
+    }
+    private static Boolean searchKey(BSTNode root, Integer key) {
+        if(root == null) return false; // key doesn't exist
+        if(key < root.elem) {
+            return searchKey(root.left, key);
+        } else if(key > root.elem) {
+            return searchKey(root.right, key);
+        }
+        return true; // found the key
+    }
+    private static String findPath(BSTNode root, Integer key, String path) {
+        if(root == null) return null;
+        path += root.elem + " "; // as i know, the key exists, so i can add the path
+        if(key < root.elem) {
+            return findPath(root.left, key, path);
+        }
+        if(key > root.elem) {
+            return findPath(root.right, key,  path);
+        }
+        return path;
     }
     //============================================================================
 

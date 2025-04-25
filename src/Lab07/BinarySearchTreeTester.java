@@ -99,8 +99,10 @@ public class BinarySearchTreeTester {
         // CONSTRUCT THE REST OF THE TREE ON YOUR OWN
         // FROM THE EXAMPLE SHOWN IN THE QUESTION
         // TO DO
-        
-
+        root.left.right = new BSTNode(15);
+        root.right = new BSTNode(40);
+        root.right.left = new BSTNode(35);
+        root.right.right = new BSTNode(55);
         //The following 2 lines print the binary tree. So no need to change it
         System.out.println("::Given Binary Tree::");
         BSTPrinter.printNode(root);
