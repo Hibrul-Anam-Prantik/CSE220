@@ -31,36 +31,67 @@ public class BinarySearchTreeTester {
         // TO DO
         // CONSTRUCT THE REST OF THE TREE ON YOUR OWN FROM 
         // THE EXAMPLE SHOWN IN THE QUESTION
-
+        root.left.left.left = new BSTNode(6);
+        root.left.left.right = new BSTNode(9);
+        root.left.right = new BSTNode(12);
+        root.right = new BSTNode(25);
+        root.right.left = new BSTNode(20);
+        root.right.left.left = new BSTNode(18);
+        root.right.left.right = new BSTNode(22);
+        root.right.right = new BSTNode(30);
         // Once the you're done creating the tree then uncomment the following lines
         
-        // System.out.println("::Given Binary Tree::");
-        // BSTPrinter.printNode(root);
-        // System.out.println("--------------------------------------------------");
+         System.out.println("::Given Binary Tree::");
+         BSTPrinter.printNode(root);
+         System.out.println("--------------------------------------------------");
         
         // //First test case is already written for you so, don' change it
-        // String t1 = "Task#1 Test#1";
-        // System.out.println(":Expected Output: LCA(6,12)=10");
-        // Integer out = Task1.lowestCommonAncestor(root,6,12);
-        // System.out.println(":  Your Output  : LCA(6,12)="+out);
-        // if(out==null || out!=10) failedPrint(t1);
-        // else successPrint(t1);
+         String t1 = "Task#1 Test#1";
+         System.out.println(":Expected Output: LCA(6,12)=10");
+         Integer out = Task1.lowestCommonAncestor(root,6,12);
+         System.out.println(":  Your Output  : LCA(6,12)="+out);
+         if(out==null || out!=10) failedPrint(t1);
+         else successPrint(t1);
         
         // //Write the rest of the test cases yourself
         
-        // System.out.println("------------------------------");
+         System.out.println("------------------------------");
         // // Test Case 2 (20,6)
         // // TO DO
-        // System.out.println("------------------------------");
+        t1 = "Task#1 Test#2";  // I just updated the String t1, instead of creating new String
+        System.out.println(":Expected Output: LCA(20,6)=15");
+        out = Task1.lowestCommonAncestor(root,20,6); // updated out as test#2 instructions
+        System.out.println(":  Your Output  : LCA(20,6)="+out);
+        if(out==null || out!=15) failedPrint(t1);
+        else successPrint(t1);
+         System.out.println("------------------------------");
         // // Test Case 3 (18,22)
         // // TO DO
-        // System.out.println("------------------------------");
+        t1 = "Task#1 Test#3";
+        System.out.println(":Expected Output: LCA(18,22)=20");
+        out = Task1.lowestCommonAncestor(root,18,22);
+        System.out.println(":  Your Output  : LCA(18,22)="+out);
+        if(out==null || out!=20) failedPrint(t1);
+        else successPrint(t1);
+         System.out.println("------------------------------");
         // // Test Case 4 (20,25)
         // // TO DO
-        // System.out.println("------------------------------");
+        t1 = "Task#1 Test#4";
+        System.out.println(":Expected Output: LCA(20,25)=25");
+        out = Task1.lowestCommonAncestor(root,20,25);
+        System.out.println(":  Your Output  : LCA(20,25)="+out);
+        if(out==null || out!=25) failedPrint(t1);
+        else successPrint(t1);
+         System.out.println("------------------------------");
         // // Test Case 5 (10,12)
         // // TO DO
-        // System.out.println("------------------------------");
+        t1 = "Task#1 Test#2";
+        System.out.println(":Expected Output: LCA(10,12)=10");
+        out = Task1.lowestCommonAncestor(root,10,12);
+        System.out.println(":  Your Output  : LCA(10,12)="+out);
+        if(out==null || out!=10) failedPrint(t1);
+        else successPrint(t1);
+         System.out.println("------------------------------");
     }
     
     public static void task2(){
