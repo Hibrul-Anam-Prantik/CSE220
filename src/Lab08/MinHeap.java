@@ -4,36 +4,12 @@ import java.util.NoSuchElementException;
 
 // Task#1
 public class MinHeap {
-    // Tester
-    public static void main(String[] args) {
-        MinHeap heap = new MinHeap(5);
-        heap.insert(3);
-        heap.insert(4);
-        heap.insert(1);
-        heap.insert(2);
-        heap.insert(7);
-        heap.insert(-1);
-//        heap.printHeapArray();
-        int x = heap.extractMin();
-        System.out.println("*** " + x + " is removed from the Heap ***");
-        x = heap.extractMin();
-        System.out.println("*** " + x + " is removed from the Heap ***");
-        x = heap.extractMin();
-        System.out.println("*** " + x + " is removed from the Heap ***");
-        x = heap.extractMin();
-        System.out.println("*** " + x + " is removed from the Heap ***");
-        x = heap.extractMin();
-        System.out.println("*** " + x + " is removed from the Heap ***");
-        x = heap.extractMin();
-//        System.out.println("*** " + x + " is removed from the Heap ***");
-        heap.printHeapArray();
-    }
-
-    public int[] heap;
-    public int size;
+    private int[] heap;
+    private int size;
 
     public MinHeap(int capacity) {
         heap = new int[capacity + 1]; // adding 1, as I am using the 1-indexing format
+        size = 0;
     }
 
     public void insert(int value) {
@@ -41,15 +17,8 @@ public class MinHeap {
             System.out.println("*** Heap is full!!  Can't insert (" + value + ") ***");
             return;
         }
-        heap[++size] = value;  // 1 indexing
-        int child = size;
-        int parent = child/2;
-
-        while(heap[child] < heap[parent]) {
-            swap(child, parent);
-            child = parent;
-            parent = child/2;
-        }
+        heap[++size] = value;  // using the 1-indexing format
+        swim(size);
     }
 
     public int extractMin() {
@@ -61,19 +30,41 @@ public class MinHeap {
         swap(1, size);
         size--;
         heapify(1);
+        System.out.println("*** " + min + " is removed from the Heap ***");
         return min;
     }
 
-    public void swim() {
+    public void swim(int i) {
+        int child = i;
+        int parent = child/2;
 
+        while(heap[child] < heap[parent]) {
+            swap(child, parent);
+            child = parent;
+            parent = child/2;
+        }
     }
 
-    public void sink() {
-
+    public void sink(int i) {
+        int minI = i;
+        int left = 2 * i, right = 2 * i + 1;
+        if(left <= size && heap[left] < heap[i]) minI = left;
+        if(right <= size && heap[right] < heap[i]) minI = right;
+        if(minI != i) {
+            swap(minI, i);
+            sink(minI);
+        }
     }
 
     public void sort() {
-
+        int tempSize = size;
+        for(int i = size; i > 1; --i) {
+            swap(1, i);
+            size--;
+            sink(1);
+        }
+        size = tempSize;
+        System.out.println("*** Heap is Sorted! ***");
     }
 
     private void swap(int index1, int index2) {
@@ -93,13 +84,25 @@ public class MinHeap {
         }
     }
 
-    private void printHeapArray() {
+    public void printHeapArray() {
         if(size < 1) {
             System.out.println("Heap is empty!!  Can't  print");
             return;
         }
         System.out.println("=====> Printing HeapArray <=====");
         for(int i = 1; i <= size; ++i) {
+            System.out.print(heap[i] + " -> ");
+        }
+        System.out.println("\n<=====> * ===== * <=====>");
+    }
+
+    public void printSortedHeapArray() {
+        if(size < 1) {
+            System.out.println("Heap is empty!!  Can't  print");
+            return;
+        }
+        System.out.println("=====> Printing Sorted HeapArray <=====");
+        for(int i = size; i > 0; --i) {
             System.out.print(heap[i] + " -> ");
         }
         System.out.println("\n<=====> * ===== * <=====>");
