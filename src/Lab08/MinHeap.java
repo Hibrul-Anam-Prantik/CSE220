@@ -1,7 +1,4 @@
 package Lab08;
-
-import java.util.NoSuchElementException;
-
 // Task#1
 public class MinHeap {
     private int[] heap;
