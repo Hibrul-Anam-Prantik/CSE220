@@ -3,44 +3,75 @@ package Lab08;
 public class HeapTester
 {
     public static void main(String[] args) {
-        // Task#1
+        // TASK#01
         System.out.println("===================TASK#01====================");
-        MinHeap heap = new MinHeap(5);
-        heap.insert(3);
-        heap.insert(4);
-        heap.insert(1);
-        heap.insert(2);
-        heap.insert(7);
-        heap.insert(-1);
+        MinHeap minHeap = new MinHeap(5);
+        int[] elems = {30, 40, 10, 20, 70, -10};
+        insert(minHeap, elems);
         System.out.println();
-        heap.printHeapArray();
+        printHeapArray(minHeap);
         System.out.println();
-        int x = heap.extractMin();
-//        System.out.println();
-        heap.printHeapArray();
-        heap.sort();
-        heap.printSortedHeapArray();
+        elems = new int[]{30, 40, 10, 20, 70};
+        insert(minHeap, elems);
+        System.out.println(minHeap.extractMin() + " is extracted.");
+        printHeapArray(minHeap);
         System.out.println();
-        x = heap.extractMin();
-        heap.printHeapArray();
-        heap.sort();
-        heap.printSortedHeapArray();
+        elems = new int[]{30, 40, 10, 20, 70, -10};
+        insert(minHeap, elems);
+        minHeap.sort();
+        printHeapArray(minHeap);
         System.out.println();
-        x = heap.extractMin();
-        heap.printHeapArray();
-        System.out.println();
-        x = heap.extractMin();
-        heap.printHeapArray();
-        System.out.println();
-        x = heap.extractMin();
-        heap.printHeapArray();
-        System.out.println();
-        x = heap.extractMin();
-        heap.printHeapArray();
         System.out.println("===================FINISHED===================");
         System.out.println("==============================================");
+        // TASK#02
         System.out.println("===================TASK#02====================");
+        MaxHeap maxHeap = new MaxHeap(5);
+        elems = new int[]{3, 4, 1, 2, 7, -1};
+        insert(maxHeap, elems);
+        System.out.println();
+        printHeapArray(maxHeap);
+        System.out.println();
+        elems = new int[]{3, 4, 1, 2, 7, -1};
+        insert(maxHeap, elems);
+        System.out.println(maxHeap.extractMax() + " is extracted.");
+        printHeapArray(maxHeap);
+        System.out.println();
+        elems = new int[]{3, 4, 1, 2, 7, -1};
+        insert(maxHeap, elems);
+        maxHeap.sort();
+        printHeapArray(maxHeap);
+        System.out.println();
         System.out.println("===================FINISHED===================");
         System.out.println("==============================================");
+
+    }
+    public static void insert(MaxHeap heap, int[] arr) {
+        for(int x: arr)
+            heap.insert(x);
+    }
+
+    public static void insert(MinHeap heap, int[] arr) {
+        for(int x: arr)
+            heap.insert(x);
+    }
+
+    public static void printHeapArray(MaxHeap heap) {
+        System.out.println("=====> Printing HeapArray <=====");
+        int elem = heap.extractMax();
+        while(elem != Integer.MAX_VALUE) {
+            System.out.print(elem + " -> ");
+            elem = heap.extractMax();
+        }
+        System.out.println("\n<=====> * ===== * <=====>");
+    }
+
+    public static void printHeapArray(MinHeap heap) {
+        System.out.println("=====> Printing HeapArray <=====");
+        int elem = heap.extractMin();
+        while(elem != Integer.MIN_VALUE) {
+            System.out.print(elem + " -> ");
+            elem = heap.extractMin();
+        }
+        System.out.println("\n<=====> * ===== * <=====>");
     }
 }

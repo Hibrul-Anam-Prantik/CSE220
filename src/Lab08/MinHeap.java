@@ -20,14 +20,13 @@ public class MinHeap {
 
     public int extractMin() {
         if( size == 0) {
-            System.out.println("*** Heap is empty!!  Can't extract min ***");
+//            System.out.println("*** Heap is empty!!  Can't extract min ***");
             return Integer.MIN_VALUE;
         }
         int min = heap[1];
-        swap(1, size);
-        size--;
-        heapify(1);
-        System.out.println("*** " + min + " is removed from the Heap ***");
+        swap(heap,1, size--);
+        heapify(heap, size,1);
+//        System.out.println("*** " + min + " is removed from the Heap ***");
         return min;
     }
 
@@ -35,73 +34,63 @@ public class MinHeap {
         int child = i;
         int parent = child/2;
 
-        while(heap[child] < heap[parent]) {
-            swap(child, parent);
+        while(parent > 0 && heap[child] < heap[parent]) {
+            swap(heap, child, parent);
             child = parent;
             parent = child/2;
         }
     }
 
-    public void sink(int i) {
+    public void sink(int[] heap, int i) {
         int minI = i;
         int left = 2 * i, right = 2 * i + 1;
-        if(left <= size && heap[left] < heap[i]) minI = left;
-        if(right <= size && heap[right] < heap[i]) minI = right;
+        if(left <= size && heap[left] < heap[minI]) minI = left;
+        if(right <= size && heap[right] < heap[minI]) minI = right;
         if(minI != i) {
-            swap(minI, i);
-            sink(minI);
+            swap(heap, minI, i);
+            sink(heap, minI);
         }
     }
 
     public void sort() {
-        int tempSize = size;
-        for(int i = size; i > 1; --i) {
-            swap(1, i);
-            size--;
-            sink(1);
+        int[] tempHeap = new int[size + 1];
+        // coping
+        for (int i = 1; i <= size; i++) {
+            tempHeap[i] = heap[i];
         }
-        size = tempSize;
+        int tempSize = size;
+        for (int i = tempSize / 2; i >= 1; --i) {
+            heapify(tempHeap, tempSize, i);
+        }
+        // sorting
+        for (int i = tempSize; i >= 1; --i) {
+            swap(tempHeap,1, i);
+            tempSize--;
+            sink(tempHeap,1);
+        }
         System.out.println("*** Heap is Sorted! ***");
+        for (int i = size; i > 0; --i) {
+            System.out.print(tempHeap[i] + " -> ");
+        }
+        System.out.println();
     }
 
-    private void swap(int index1, int index2) {
+    private void swap(int[] heap, int index1, int index2) {
         int temp = heap[index1];
         heap[index1] = heap[index2];
         heap[index2] = temp;
     }
 
-    private void heapify(int i) {
+    private void heapify(int[] heap, int size, int i) {
         int left = 2 * i, right = 2 * i + 1, minI = i;
         if(left <= size && heap[left] < heap[minI]) minI = left;
         if(right <= size && heap[right] < heap[minI]) minI = right;
 
         if(minI != i) {
-            swap(i, minI);
-            heapify(minI);
+            int temp = heap[i];
+            heap[i] = heap[minI];
+            heap[minI] = temp;
+            heapify(heap, size, minI);
         }
-    }
-
-    public void printHeapArray() {
-        if(size < 1) {
-            System.out.println("Heap is empty!!  Can't  print");
-            return;
-        }
-        System.out.println("=====> Printing HeapArray <=====");
-        for(int i = 1; i <= size; ++i) {
-            System.out.print(heap[i] + " -> ");
-        }
-        System.out.println("\n<=====> * ===== * <=====>");
-    }
-
-    public void printSortedHeapArray() {
-        if(size < 1) {
-            System.out.println("Heap is empty!!  Can't  print");
-            return;
-        }
-        System.out.println("=====> Printing Sorted HeapArray <=====");
-        for(int i = size; i > 0; --i) {
-            System.out.print(heap[i] + " -> ");
-        }
-        System.out.println("\n<=====> * ===== * <=====>");
     }
 }
