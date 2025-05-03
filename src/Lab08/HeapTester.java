@@ -43,7 +43,6 @@ public class HeapTester
         System.out.println();
         System.out.println("===================FINISHED===================");
         System.out.println("==============================================");
-
     }
     public static void insert(MaxHeap heap, int[] arr) {
         for(int x: arr)

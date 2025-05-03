@@ -9,6 +9,11 @@ public class MinHeap {
         size = 0;
     }
 
+    // for task 03
+    public int[] getHeap() {
+        return heap;
+    }
+
     public void insert(int value) {
         if(size >= heap.length - 1) {
             System.out.println("*** Heap is full!!  Can't insert (" + value + ") ***");
