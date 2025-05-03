@@ -57,7 +57,7 @@ public class MinHeap {
         }
     }
 
-    public void sort() {
+    public int[] sort() {
         int[] tempHeap = new int[size + 1];
         // coping
         for (int i = 1; i <= size; i++) {
@@ -73,11 +73,12 @@ public class MinHeap {
             tempSize--;
             sink(tempHeap,1);
         }
-        System.out.println("*** Heap is Sorted! ***");
-        for (int i = size; i > 0; --i) {
-            System.out.print(tempHeap[i] + " -> ");
-        }
-        System.out.println();
+        return tempHeap;
+//        System.out.println("*** Heap is Sorted! ***");
+//        for (int i = size; i > 0; --i) {
+//            System.out.print(tempHeap[i] + " -> ");
+//        }
+//        System.out.println();
     }
 
     private void swap(int[] heap, int index1, int index2) {

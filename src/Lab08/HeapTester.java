@@ -18,7 +18,9 @@ public class HeapTester
         System.out.println();
         elems = new int[]{30, 40, 10, 20, 70, -10};
         insert(minHeap, elems);
-        minHeap.sort();
+        int[] sorted = minHeap.sort();
+        System.out.println("Sorted!");
+        printSortedArray(sorted);
         printHeapArray(minHeap);
         System.out.println();
         System.out.println("===================FINISHED===================");
@@ -71,6 +73,13 @@ public class HeapTester
             System.out.print(elem + " -> ");
             elem = heap.extractMin();
         }
+        System.out.println("\n<=====> * ===== * <=====>");
+    }
+
+    public static void printSortedArray(int[] arr){
+        System.out.println("=====> Printing SortedArray <=====");
+        for(int i = arr.length - 1; i > 0; --i)
+            System.out.print(arr[i] + " -> ");
         System.out.println("\n<=====> * ===== * <=====>");
     }
 }
