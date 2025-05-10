@@ -1,28 +1,90 @@
 package Lab09;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class Graph
 {
     int size;
-    LinkedList<Integer> adjList = new LinkedList<>();
-    // size = number of nodes
+    Node[] adjList;
+    int count = 0;
+
     public Graph(int size) {
         this.size = size;
+        adjList = new Node[size];
+    }
+
+    public void addNode(Node node) {
+        if(count < size) adjList[count++] = node;
     }
     
-    public void addEdge() {
-        Edge elem1 = new Edge(0, 1, 1);
-        elem1.next = adjList.get(0);
+    public void addEdge(int src, int dest, int weight, boolean unDirected) {
+        // weight == 0 means no weight(unWeighted)
+        Node destNode = new Node(dest);
+        destNode.next = adjList[src].next;
+        adjList[src].next = destNode;
+
+        if(unDirected) {  // undirected == true
+            Node srcNode = new Node(src);
+            srcNode.next = adjList[dest].next;
+            adjList[dest].next = srcNode;
+        }
+    }
+
+    // Task#01
+    public int maxDegree() {
+        int maxD = 0;
+        int maxV = adjList[0].data;
+        for(int i = 0; i < count; i++) {
+            int degree = countEdges(adjList[i]);
+            if(degree > maxD) {
+                maxD = degree;
+                maxV = adjList[i].data;
+            }
+        }
+        System.out.println("Vertex \"" + maxV + "\" has Max Degree.");
+        return maxD;
+    }
+
+    private int countEdges(Node node) {
+        int count = 0;
+        Node curr = node.next;
+        while(curr != null) {
+            count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+
+    public void checkEdge(int src, int dest, int weight) {
+        Node curr = adjList[src].next;
+        while (curr != null) {
+            if (curr.data == dest) {
+                System.out.println("Edge exists: " + src + " --> " + dest);
+                return;
+            }
+            curr = curr.next;
+        }
+        System.out.println("No Edge: " + src + " -X- " + dest);
+    }
+
+    public void print() {
+        for(int i = 0; i <count; ++i) {
+            System.out.print(adjList[i].data + " --> ");
+            Node curr = adjList[i].next;
+            while(curr != null) {
+                System.out.print(curr.data + " --> ");
+                curr = curr.next;
+            }
+            System.out.println();
+        }
     }
     
 }
-// Adjacency 
-class Edge {
-    public Integer next;
 
-    Edge (int source, int destination, int weight) {
-        
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
     }
 }
