@@ -21,7 +21,7 @@ public class Graph
         destNode.next = adjList[src].next;
         adjList[src].next = destNode;
 
-        if(unDirected) {  // undirected == true
+        if(unDirected && src != dest) {  // undirected == true
             Node srcNode = new Node(src);
             srcNode.next = adjList[dest].next;
             adjList[dest].next = srcNode;
@@ -53,17 +53,17 @@ public class Graph
         return count;
     }
 
-    public void checkEdge(int src, int dest, int weight) {
-        Node curr = adjList[src].next;
-        while (curr != null) {
-            if (curr.data == dest) {
-                System.out.println("Edge exists: " + src + " --> " + dest);
-                return;
-            }
-            curr = curr.next;
-        }
-        System.out.println("No Edge: " + src + " -X- " + dest);
-    }
+//    public void checkEdge(int src, int dest, int weight) {
+//        Node curr = adjList[src].next;
+//        while (curr != null) {
+//            if (curr.data == dest) {
+//                System.out.println("Edge exists: " + src + " --> " + dest);
+//                return;
+//            }
+//            curr = curr.next;
+//        }
+//        System.out.println("No Edge: " + src + " -X- " + dest);
+//    }
 
     public void print() {
         for(int i = 0; i <count; ++i) {
