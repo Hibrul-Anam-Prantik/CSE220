@@ -149,6 +149,7 @@ public class GraphListTeste
         GraphList updatedGraph = g.directedToUndirected(g);
         System.out.println("The Converted Directed Graph: ");
         updatedGraph.print();
+        System.out.println("\n===================FINISHED===================\n");
     }
 
     private static void makeEmptyGraph(GraphList g) {
