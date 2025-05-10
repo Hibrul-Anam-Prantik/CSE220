@@ -15,13 +15,13 @@ public class Graph
         if(count < size) adjList[count++] = node;
     }
     
-    public void addEdge(int src, int dest, int weight, boolean unDirected) {
+    public void addEdge(int src, int dest, int weight, boolean direction) {
         // weight == 0 means no weight(unWeighted)
         Node destNode = new Node(dest, weight);
         destNode.next = adjList[src].next;
         adjList[src].next = destNode;
 
-        if(unDirected && src != dest) {  // undirected == true
+        if(!direction && src != dest) {  // undirected == true
             Node srcNode = new Node(src, weight);
             srcNode.next = adjList[dest].next;
             adjList[dest].next = srcNode;
