@@ -17,12 +17,12 @@ public class Graph
     
     public void addEdge(int src, int dest, int weight, boolean unDirected) {
         // weight == 0 means no weight(unWeighted)
-        Node destNode = new Node(dest);
+        Node destNode = new Node(dest, weight);
         destNode.next = adjList[src].next;
         adjList[src].next = destNode;
 
         if(unDirected && src != dest) {  // undirected == true
-            Node srcNode = new Node(src);
+            Node srcNode = new Node(src, weight);
             srcNode.next = adjList[dest].next;
             adjList[dest].next = srcNode;
         }
@@ -43,6 +43,30 @@ public class Graph
         return maxD;
     }
 
+    //Task#02
+    public int maxEdgeWeight() {
+        int maxW = 0;
+        int maxV = adjList[0].data;
+        for(int i = 0; i < count; i++) {
+            int weight = sumEdgeWeight(adjList[i]);
+            if(weight > maxW) {
+                maxW = weight;
+                maxV = adjList[i].data;
+            }
+        }
+        System.out.println("Vertex \"" + maxV + "\" has Max Edge Weight.");
+        return maxW;
+    }
+
+    private int sumEdgeWeight(Node node) {
+        int weight = 0;
+        Node curr = node.next;
+        while(curr != null) {
+            weight += curr.weight;
+            curr = curr.next;
+        }
+        return weight;
+    }
     private int countEdges(Node node) {
         int count = 0;
         Node curr = node.next;
@@ -80,11 +104,13 @@ public class Graph
 }
 
 class Node {
-    int data;
+    int data; // vertices
+    int weight;  // for unWeighted I will use "0" as the weight
     Node next;
 
-    Node(int data) {
+    Node(int data, int weight) {
         this.data = data;
+        this.weight = weight;
         this.next = null;
     }
 }
