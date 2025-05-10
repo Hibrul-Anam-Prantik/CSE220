@@ -1,12 +1,12 @@
 package Lab09;
 
-public class Graph
+public class GraphList
 {
     int size;
     Node[] adjList;
     int count = 0;
 
-    public Graph(int size) {
+    public GraphList(int size) {
         this.size = size;
         adjList = new Node[size];
     }
@@ -14,7 +14,7 @@ public class Graph
     public void addNode(Node node) {
         if(count < size) adjList[count++] = node;
     }
-    
+
     public void addEdge(int src, int dest, int weight, boolean direction) {
         // weight == 0 means no weight(unWeighted)
         Node destNode = new Node(dest, weight);
@@ -43,7 +43,7 @@ public class Graph
         return maxD;
     }
 
-    //Task#02
+    // Task#02
     public int maxEdgeWeight() {
         int maxW = 0;
         int maxV = adjList[0].data;
@@ -56,6 +56,34 @@ public class Graph
         }
         System.out.println("Vertex \"" + maxV + "\" has Max Edge Weight.");
         return maxW;
+    }
+
+    // Task#04
+    public GraphList directedToUndirected(GraphList g) {
+        // to avoid creating duplicate reverse edges, I am using a copy of the directedGraph
+        GraphList tempG = new GraphList(g.size);
+        for(int i = 0; i < g.count; ++i) {
+            tempG.addNode(new Node(g.adjList[i].data, 0)); // empty nodes
+        }
+
+        for(int i = 0; i < g.count; ++i) {
+            Node curr = g.adjList[i].next;
+            while(curr != null) {
+                int src = i;
+                int dest = curr.data;
+                int weight = curr.weight;
+                /* If there's no connection between the Source and the Destination,
+                    I will make a connection between them (following, direction = false; unDirected),
+                    and add the weights.
+                 */
+                if (!checkEdge(tempG, dest, src)) {
+                    tempG.addEdge(src, dest, weight, false);
+                }
+                // using false in the direction parameter will make the graph undirected by adding the edges in both directions.
+                curr = curr.next;
+            }
+        }
+        return tempG;
     }
 
     private int sumEdgeWeight(Node node) {
@@ -77,18 +105,6 @@ public class Graph
         return count;
     }
 
-//    public void checkEdge(int src, int dest, int weight) {
-//        Node curr = adjList[src].next;
-//        while (curr != null) {
-//            if (curr.data == dest) {
-//                System.out.println("Edge exists: " + src + " --> " + dest);
-//                return;
-//            }
-//            curr = curr.next;
-//        }
-//        System.out.println("No Edge: " + src + " -X- " + dest);
-//    }
-
     public void print() {
         for(int i = 0; i <count; ++i) {
             System.out.print(adjList[i].data + " --> ");
@@ -100,7 +116,15 @@ public class Graph
             System.out.println();
         }
     }
-    
+
+    private boolean checkEdge(GraphList g, int src, int dest) {
+        Node curr = g.adjList[src].next;
+        while (curr != null) {
+            if (curr.data == dest) return true; // edge
+            curr = curr.next;
+        }
+        return false; // no edge
+    }
 }
 
 class Node {

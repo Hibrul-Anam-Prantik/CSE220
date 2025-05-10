@@ -3,9 +3,10 @@ package Lab09;
 public class GraphTester
 {
     public static void main(String[] args) {
-        Task01(new Graph(7));
-        Task02(new Graph(7));
-        Task03(new Graph(7));
+        Task01(new GraphList(7));
+        Task02(new GraphList(7));
+        Task03(new GraphList(7));
+        Task04(new GraphList(7));
     /*
         ________________
         |         |    |
@@ -20,7 +21,7 @@ public class GraphTester
      */
     }
 
-    public static void Task01(Graph g) {
+    public static void Task01(GraphList g) {
         System.out.println("===================TASK#01====================\n");
         makeEmptyGraph(g);
         boolean direction = false;  // unDirected
@@ -52,7 +53,7 @@ public class GraphTester
         System.out.println("\n===================FINISHED===================\n");
     }
 
-    public static void Task02(Graph g) {
+    public static void Task02(GraphList g) {
         System.out.println("===================TASK#02====================\n");
         makeEmptyGraph(g);
         boolean direction = false; // unDirected
@@ -84,7 +85,7 @@ public class GraphTester
         System.out.println("\n===================FINISHED===================\n");
     }
 
-    public static void Task03(Graph g) {
+    public static void Task03(GraphList g) {
         System.out.println("===================TASK#03====================\n");
         makeEmptyGraph(g);
         boolean direction = true; // directed
@@ -117,7 +118,40 @@ public class GraphTester
         System.out.println("\n===================FINISHED===================\n");
     }
 
-    private static void makeEmptyGraph(Graph g) {
+    public static void Task04(GraphList g) {
+        System.out.println("===================TASK#04====================\n");
+        makeEmptyGraph(g);
+        boolean direction = true; // directed
+        // for size 7
+        g.addEdge(0, 1, 7, direction);
+        g.addEdge(0, 2, 3, direction);
+        g.addEdge(0, 3, 1, direction);
+        g.addEdge(0, 4, 2, direction);
+
+        g.addEdge(1, 2, 8, direction);
+        g.addEdge(1, 4, 2, direction);
+        g.addEdge(1, 5, 4, direction);
+
+        g.addEdge(2, 3, 4, direction);
+        g.addEdge(2, 4, 6, direction);
+        g.addEdge(2, 5, 2, direction);
+
+        g.addEdge(3, 5, -1, direction);
+        g.addEdge(3, 6, 3, direction);
+
+        g.addEdge(4, 5, 4, direction);
+        g.addEdge(4, 4, 5, direction);
+        g.addEdge(4, 6, 2, direction);
+
+        g.addEdge(5, 6, 7, direction);
+        System.out.println("The Given Directed Graph: ");
+        g.print();
+        GraphList updatedGraph = g.directedToUndirected(g);
+        System.out.println("The Converted Directed Graph: ");
+        updatedGraph.print();
+    }
+
+    private static void makeEmptyGraph(GraphList g) {
         for(int i = 0; i < g.size; ++i) {
             g.addNode(new Node(i, 0));
         }
