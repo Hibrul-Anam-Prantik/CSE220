@@ -21,7 +21,7 @@ public class GraphList
         destNode.next = adjList[src].next;
         adjList[src].next = destNode;
 
-        if(!direction && src != dest) {  // undirected == true
+        if(!direction && src != dest) {  // undirected == false
             Node srcNode = new Node(src, weight);
             srcNode.next = adjList[dest].next;
             adjList[dest].next = srcNode;
@@ -30,8 +30,7 @@ public class GraphList
 
     // Task#01
     public int maxDegree() {
-        int maxD = 0;
-        int maxV = adjList[0].data;
+        int maxD = 0, maxV = adjList[0].data;
         for(int i = 0; i < count; i++) {
             int degree = countEdges(adjList[i]);
             if(degree > maxD) {
@@ -45,8 +44,7 @@ public class GraphList
 
     // Task#02
     public int maxEdgeWeight() {
-        int maxW = 0;
-        int maxV = adjList[0].data;
+        int maxW = 0, maxV = adjList[0].data;
         for(int i = 0; i < count; i++) {
             int weight = sumEdgeWeight(adjList[i]);
             if(weight > maxW) {
@@ -106,11 +104,11 @@ public class GraphList
     }
 
     public void print() {
-        for(int i = 0; i <count; ++i) {
-            System.out.print(adjList[i].data + " --> ");
+        for(int i = 0; i < count; ++i) {
+            System.out.print(adjList[i].data + " : ");
             Node curr = adjList[i].next;
             while(curr != null) {
-                System.out.print(curr.data + " --> ");
+                System.out.print(curr.data + " -(" + curr.weight + ")-> ");
                 curr = curr.next;
             }
             System.out.println();
