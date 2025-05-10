@@ -1,6 +1,6 @@
 package Lab09;
 
-public class GraphTesterList
+public class GraphListTeste
 {
     public static void main(String[] args) {
         Task01(new GraphList(7));
