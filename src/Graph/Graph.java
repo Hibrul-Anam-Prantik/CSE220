@@ -55,6 +55,18 @@ public class Graph
                 }
             }
         }
+        System.out.println();
+    }
+
+    public void dfs(int curr, boolean[] visited) {
+        System.out.print(curr + "  ");
+        visited[curr] = true;
+
+        Node neighbor = adjList[curr].next;
+        while(neighbor != null) {
+            if(!visited[neighbor.vertex]) dfs(neighbor.vertex, visited);
+            neighbor = neighbor.next;
+        }
     }
 
     public void print() {
@@ -96,6 +108,9 @@ public class Graph
         graph.print();
 
         graph.bfs();
+
+        System.out.println("DFS Traversal: ");
+        graph.dfs(1, new boolean[graph.size]);
     }
 }
 
