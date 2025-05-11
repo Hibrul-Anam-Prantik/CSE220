@@ -1,5 +1,8 @@
 package Graph;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Graph
 {
     int size;
@@ -30,6 +33,28 @@ public class Graph
             curr = curr.next;
         }
         return false;
+    }
+
+    public void bfs() {
+        System.out.println("BFS Traversal:");
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] visited = new boolean[size];
+//        q.add(adjList[0].vertex);
+        q.add(adjList[1].vertex);
+
+        while(!q.isEmpty()) {
+            int curr = q.remove();
+            if(!visited[curr]) {
+                System.out.print(curr + "  ");
+                visited[curr] = true;
+
+                Node neighbor = adjList[curr].next;
+                while(neighbor != null) {
+                    q.add(neighbor.vertex);
+                    neighbor = neighbor.next;
+                }
+            }
+        }
     }
 
     public void print() {
@@ -69,6 +94,8 @@ public class Graph
         graph.addEdge(4, 1, 1);
 
         graph.print();
+
+        graph.bfs();
     }
 }
 
