@@ -66,7 +66,7 @@ public class Graph
         graph.addEdge(3, 2, 2);
         graph.addEdge(3, 4, 4);
 
-        graph.addEdge(4, 1, -1);
+        graph.addEdge(4, 1, 1);
 
         graph.print();
     }
