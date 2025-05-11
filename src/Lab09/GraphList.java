@@ -71,7 +71,7 @@ public class GraphList
                 int dest = curr.data;
                 int weight = curr.weight;
                 /* If there's no connection between the Source and the Destination,
-                    I will make a connection between them (following, direction = false; unDirected),
+                    I will make a connection between them (following, direction = false; unDirected)
                     and add the weights.
                  */
                 if (!checkEdge(tempG, dest, src)) {
