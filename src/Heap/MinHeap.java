@@ -16,11 +16,11 @@ public class MinHeap
     public void insert(int value) {
         if(size == capacity) throw new IllegalStateException("Heap is full");
         heap[size] = value;
-        swin(size++);
+        swim(size++);
     }
 
     // Swim up -> to maintain heap property
-    public void swin(int index) {
+    public void swim(int index) {
         int child = index, parent = (index - 1) / 2;
 
         while(child > 0 && heap[child] < heap[parent]) {
@@ -35,7 +35,7 @@ public class MinHeap
         int min = heap[0];
         swap(0, size - 1);
         size--;
-        sink(size, 1);
+        sink(size, 0);
         return min;
     }
 
