@@ -18,6 +18,13 @@ public class Graph_ {
         return matrix[src][dest] != 0;
     }
 
+    public void dfs(int curr, boolean[] visited) {
+        System.out.print(curr + "  ");
+        visited[curr] = true;
+
+        
+    }
+
     public void print() {
         System.out.println("Adjacency Matrix:");
         System.out.println("    0 | 1 | 2 | 3 | 4 ");

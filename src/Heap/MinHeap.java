@@ -2,6 +2,10 @@ package Heap;
 
 public class MinHeap
 {
+    public static void main(String[] args) {
+        MinHeap minHeap = new MinHeap(1);
+    }
+
     int[] heap;
     int size;
     int capacity;
@@ -14,9 +18,10 @@ public class MinHeap
 
     // Insert into min Heap
     public void insert(int value) {
-        if(size == capacity) throw new IllegalStateException("Heap is full");
+        if (size >= capacity) throw new IndexOutOfBoundsException("Heap is full");
         heap[size] = value;
-        swim(size++);
+        swim(size);
+        size++;
     }
 
     // Swim up -> to maintain heap property
@@ -30,7 +35,7 @@ public class MinHeap
         }
     }
 
-    public int deleteMin() {
+    public int delete() {
         if(size == 0) return Integer.MIN_VALUE;
         int min = heap[0];
         swap(0, size - 1);

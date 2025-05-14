@@ -35,7 +35,7 @@ public class MaxHeap {
     }
 
     // Delete the max (root) element
-    public int deleteMax() {
+    public int delete() {
         if (size == 0) {
             throw new IllegalStateException("Heap is empty");
         }
@@ -111,7 +111,7 @@ public class MaxHeap {
         System.out.println("Heap:");
         maxHeap.printHeap();
 
-        System.out.println("Deleted Max: " + maxHeap.deleteMax());
+        System.out.println("Deleted Max: " + maxHeap.delete());
 
         System.out.println("Heap After Deletion:");
         maxHeap.printHeap();
