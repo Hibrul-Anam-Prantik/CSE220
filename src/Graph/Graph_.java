@@ -1,5 +1,8 @@
 package Graph;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 public class Graph_ {
     int size;
     int[][] matrix;
@@ -18,11 +21,42 @@ public class Graph_ {
         return matrix[src][dest] != 0;
     }
 
+//    public void dfs(int curr, boolean[] visited) {
+//        System.out.print(curr + "  ");
+//        visited[curr] = true;
+//    }
+
     public void dfs(int curr, boolean[] visited) {
         System.out.print(curr + "  ");
         visited[curr] = true;
 
-        
+        for (int i = 0; i < size; i++) {
+            if (matrix[curr][i] != 0 && !visited[i]) {
+                dfs(i, visited);
+            }
+        }
+    }
+
+    public void bfs(int start) {
+        System.out.println("BFS Traversal starting from " + start + ":");
+        boolean[] visited = new boolean[size];
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(start);
+        visited[start] = true;
+
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
+            System.out.print(curr + "  ");
+
+            for (int i = 0; i < size; i++) {
+                if (matrix[curr][i] != 0 && !visited[i]) {
+                    queue.add(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        System.out.println();
     }
 
     public void print() {
